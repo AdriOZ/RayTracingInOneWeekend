@@ -15,14 +15,14 @@ void WriteColor(std::ofstream& out, const Color& c)
 int main()
 {
 	// Image
-	constexpr float_t aspect = 16.0f / 9.0f;
-	constexpr uint32_t width = 600;
+	constexpr double_t aspect = 16.0f / 9.0f;
+	constexpr uint32_t width = 800;
 	constexpr uint32_t height = static_cast<uint32_t>(width / aspect);
 
 	// Camera
-	float_t viewportHeight = 2.0f;
-	float_t viewportWidth = aspect * viewportHeight;
-	float_t focalLenght = 1.0f;
+	constexpr double_t viewportHeight = 1.0f;
+	constexpr double_t viewportWidth = aspect * viewportHeight;
+	constexpr double_t focalLenght = 1.0f;
 
 	Point origin(0.0f, 0.0f, 0.0f);
 	Vec3 horizontal(viewportWidth, 0.0f, 0.0f);
@@ -40,8 +40,8 @@ int main()
 	{
 		for (uint32_t i = 0; i < width; ++i)
 		{
-			float_t u = static_cast<float_t>(i) / (width - 1);
-			float_t v = static_cast<float_t>(j) / (height - 1);
+			double_t u = static_cast<double_t>(i) / (width - 1);
+			double_t v = static_cast<double_t>(j) / (height - 1);
 			Ray r(origin, lowerLeftCorner + u * horizontal + v * vertical - origin);
 			WriteColor(file, r.GetColor());
 		}
